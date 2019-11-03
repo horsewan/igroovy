@@ -118,7 +118,7 @@ def static getType(str){
     if (str.indexOf("date")>=0){
         return "Date"
     }else if(str.indexOf("int")>=0){
-        return "int"
+        return "Integer"
     }else if(str.indexOf("varchar")>=0){
         return "String"
     }else if(str.indexOf("char")>=0){

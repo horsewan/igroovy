@@ -9,7 +9,7 @@ def static generateEntityJAVA(db_name){
     def colLines = []
     def lineStatus = 0
     tablenames.each{ t->
-        //println t.key
+        println t.key+"---->"
         def entityName = t.key
         TableVO tableVO = tablenames.get(t.key)
         def outFile = new File(Global.getEntityDir()+"/"+Global.getClassName(t.key)+".java")
@@ -49,6 +49,7 @@ def  static doWriteColumns (TableVO tableVO,writer,colLines) {
        // def ColumnVO columnVO = new ColumnVO();
        // columnVO.getColumnName()
         def colName = col.getColumnName()
+        println colName
         def colType = col.getColumnType()
         def colComment = col.getColumnComment()
         colLines.each{ line ->

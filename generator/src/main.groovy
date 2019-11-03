@@ -42,5 +42,5 @@ from_to_table_names=['hr_sys_menu':'menu']
 Global.initDirs()
 
 GenerateEntity.generateEntityJAVA("yp")
-
+GenerateMapper.generateMapperJAVA("yp")
 //println Global.getClassName("aa_bin_cad_cd")

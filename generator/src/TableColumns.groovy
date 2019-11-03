@@ -15,7 +15,7 @@ def  static getTableNames(dbname){
 def  static getColumns(tableName){
     def sql=Global.getDBSql("information_schema")
     def map=[:]
-    sql.eachRow("SELECT COLUMN_NAME,COLUMN_TYPE,COLUMN_COMMENT FROM COLUMNS WHERE TABLE_NAME='"+tableName+"'") { row ->
+    sql.eachRow("SELECT COLUMN_NAME,COLUMN_TYPE,COLUMN_COMMENT FROM COLUMNS WHERE TABLE_NAME='"+tableName+"' order by ORDINAL_POSITION") { row ->
         def tableColName=row.column_name
         def tableColType=row.column_type
         def tableColComment=row.column_comment
@@ -36,7 +36,7 @@ def  static getTables(dbname){
         tableVO.setTableName(tableName)
         tableVO.setTableComment(tableComment)
         def List<ColumnVO> columnVOList = new LinkedList<>()
-        sql.eachRow("SELECT COLUMN_NAME,COLUMN_TYPE,COLUMN_COMMENT FROM COLUMNS WHERE TABLE_NAME='" + tableName + "'") { crow ->
+        sql.eachRow("SELECT COLUMN_NAME,COLUMN_TYPE,COLUMN_COMMENT FROM COLUMNS WHERE TABLE_NAME='" + tableName + "' order by ORDINAL_POSITION") { crow ->
             def tableColName = crow.column_name
             def tableColType = crow.column_type
             def tableColComment = crow.column_comment
