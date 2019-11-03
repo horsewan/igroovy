@@ -10,10 +10,10 @@ import groovy.sql.Sql
 //def srcSql=Sql.newInstance(db_url_hr, username, password, driverClass)
 //def targetSql=Sql.newInstance(db_url_hr, username, password, driverClass)
 
-def tablenames=TableColumns.getTables('hr')
-tablenames.each{ t->
-    //println t
-}
+//def tablenames=TableColumns.getTables('yp')
+//tablenames.each{ t->
+//    println t
+//}
 // hr_addr_area={id=int(8), area_code=varchar(16), city_code=varchar(16), area_name=varchar(16), short_name=varchar(16), lng=varchar(32), lat=varchar(32)}
 //hr_addr_city={id=int(8), city_code=varchar(16), city_name=varchar(16), short_name=varchar(8), province_code=varchar(16), lng=varchar(32), lat=varchar(32)}
 //hr_addr_province={id=int(8), province_code=varchar(16), province_name=varchar(8), short_name=varchar(8), lng=varchar(32), lat=varchar(32)}
@@ -34,8 +34,13 @@ writer.flush()
 writer.close()
 */
 from_to_table_names=['hr_sys_menu':'menu']
-ExportImport.exportT('hr','yp_enterprise',from_to_table_names)
+//ExportImport.exportT('hr','yp_enterprise',from_to_table_names)
 
 //def getTableInsertSql()
 
 
+Global.initDirs()
+
+GenerateEntity.generateEntityJAVA("yp")
+
+//println Global.getClassName("aa_bin_cad_cd")

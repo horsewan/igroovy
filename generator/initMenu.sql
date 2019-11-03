@@ -16,7 +16,7 @@ insert into menu ( id,name,p_id,url,order_num,menu_type,icon,permission)  values
 insert into menu ( id,name,p_id,url,order_num,menu_type,icon,permission)  values ( '16','点名记录','3','/work/call/showCallRecord','4','2','&#xe60a;','work:record:list' );
 insert into menu ( id,name,p_id,url,order_num,menu_type,icon,permission)  values ( '17','签到签退','3','/work/sign/showUserSignList','5','2','&#xe670;','work:sign:list' );
 insert into menu ( id,name,p_id,url,order_num,menu_type,icon,permission)  values ( '18','请假管理','3','/work/take_off/showTakeOff','6','2','&#xe663;','work:takeoff:list' );
-insert into menu ( id,name,p_id,url,order_num,menu_type,icon,permission)  values ( '19','小组管理','3','/work/group/showGroup','7','2','&#xe66a;','work:job:group:list' );
+insert into menu ( id,name,p_id,url,order_num,menu_type,icon,permission)  values ( '19','小组管理','3','/ork/group/showGroup','7','2','&#xe66a;','work:job:group:list' );
 insert into menu ( id,name,p_id,url,order_num,menu_type,icon,permission)  values ( '20','工作量列表','4','/work_load/showWorkLoad','1','2','&#xe632','workLoad:list' );
 insert into menu ( id,name,p_id,url,order_num,menu_type,icon,permission)  values ( '21','初审工资单','5','/salary/check/showSalary','1','2','&#xe656;','salary:list' );
 insert into menu ( id,name,p_id,url,order_num,menu_type,icon,permission)  values ( '22','复审工资单','5','/salary/review/showSalaryReview','2','2','&#xe653;','salary:review:list' );
