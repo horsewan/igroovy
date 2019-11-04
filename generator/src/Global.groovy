@@ -1,7 +1,7 @@
 import groovy.sql.Sql
 
 def static getDBUrl(){
-    return  "jdbc:mysql://localhost:3306/"
+    return  "jdbc:mysql://192.168.1.169:3306/"
 }
 
 def static getDBUserName(){
@@ -9,7 +9,7 @@ def static getDBUserName(){
 }
 
 def static getDBPassword(){
-    return  "123456"   //
+    return  "yopoun123456?"   //
 }
 
 def static getDriverClass(){

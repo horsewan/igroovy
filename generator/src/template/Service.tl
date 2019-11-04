@@ -1,7 +1,8 @@
-package ${package.Service};
+package {packageService};
 
-import ${package.Entity}.${entity};
-import ${superServiceClassPackage};
+import {packageEntity}.{entity};
+import {superServiceClassPackage};
+
 
 /**
  * <p>
@@ -11,6 +12,6 @@ import ${superServiceClassPackage};
  * @author ${author}
  * @since ${date}
  */
-public interface ${ServiceName} extends ${ServiceClass}<{entity}> {
+public interface {ServiceName} extends {ServiceClass}<{entity}> {
 
 }

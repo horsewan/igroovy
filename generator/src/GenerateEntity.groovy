@@ -61,7 +61,3 @@ def  static doWriteColumns (TableVO tableVO,writer,colLines) {
         }
     }
 }
-
-
-
-

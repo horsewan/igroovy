@@ -36,7 +36,7 @@ def  static getTables(dbname){
         tableVO.setTableName(tableName)
         tableVO.setTableComment(tableComment)
         def List<ColumnVO> columnVOList = new LinkedList<>()
-        sql.eachRow("SELECT COLUMN_NAME,COLUMN_TYPE,COLUMN_COMMENT FROM COLUMNS WHERE TABLE_NAME='" + tableName + "' order by ORDINAL_POSITION") { crow ->
+        sql.eachRow("SELECT COLUMN_NAME,COLUMN_TYPE,COLUMN_COMMENT FROM COLUMNS WHERE TABLE_NAME='" + tableName + "' AND TABLE_SCHEMA='"+dbname+"' order by ORDINAL_POSITION") { crow ->
             def tableColName = crow.column_name
             def tableColType = crow.column_type
             def tableColComment = crow.column_comment
