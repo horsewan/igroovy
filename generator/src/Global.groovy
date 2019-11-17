@@ -24,6 +24,7 @@ def static getDBSql(dbName){
 }
 
 
+
 def static getPackage(){
     return "com.yp.enterprise"
 }
@@ -106,6 +107,7 @@ def static getClassName(str) {
 def static getVarName(str) {
     return toCamelStr(str)
 }
+
 def static toCamelStr(str) {
         if (!str || str.size() <= 1) return str
         String r = str.toLowerCase().split('_').collect { cc -> cc.capitalize() }.join('')

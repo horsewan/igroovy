@@ -39,7 +39,6 @@ def static getSqlString(from_tablename,to_table_name,columnsMap,from_sql,to_sql)
     def sqlList = []
     def f_sql_string='select * from '+ from_tablename +""
 //    def insert_sql_string = "insert into ( TCLOUMNS ) " +tablename+ +" values ( TVALUES ) ; "
-
     from_sql.eachRow(f_sql_string){ row ->
         def columns=''
         def values=''

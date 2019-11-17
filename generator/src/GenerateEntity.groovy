@@ -43,6 +43,7 @@ def static generateEntityJAVA(db_name){
 }
 
 
+
 def  static doWriteColumns (TableVO tableVO,writer,colLines) {
     def columnList = tableVO.getColumnVOList()
     columnList.forEach { col ->
@@ -56,8 +57,18 @@ def  static doWriteColumns (TableVO tableVO,writer,colLines) {
             line = line.replaceAll("\\{fieldPropertyType\\}",Global.getType(colType))
             line = line.replaceAll("\\{fieldPropertyName\\}",Global.getVarName(colName))
             line = line.replaceAll("\\{fieldComment\\}",colComment)
-            writer.write(line)
-            writer.write("\n")
+            if(line.indexOf("@TableId")>=0 ){
+
+                if(colName == "id") {
+                    writer.write(line)
+                    writer.write("\n")
+                }
+
+            } else {
+                writer.write(line)
+                writer.write("\n")
+            }
+
         }
     }
 }

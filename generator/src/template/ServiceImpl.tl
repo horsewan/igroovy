@@ -18,3 +18,4 @@ import org.springframework.stereotype.Service;
 public class {tableServiceImplName} implements {tableServiceName} {
 
 }
+
