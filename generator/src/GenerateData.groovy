@@ -116,13 +116,14 @@ def static genDataForUser(String dbName){
 def static genDataForEmployer(String dbName){
     def ex_sql = Global.getDBSql(dbName)
     def insert_sql="INSERT INTO company_employer(user_id,company_id,hire_date,status,status_desc,isActive,fire_date)  VALUES (@userid@,@companyid@,NOW(),0,'雇佣',1,NOW())";
-    for(int i=0;i<100;i++){
-        def insert_string = insert_sql.replace("@userid@",(1700+i).toString())
-        insert_string=insert_string.replace("@companyid@","12")
+    for(int i=0;i<500;i++){
+        def insert_string = insert_sql.replace("@userid@",(3500+i).toString())
+        insert_string=insert_string.replace("@companyid@","11")
         ex_sql.executeInsert(insert_string)
         println insert_string
     }
 }
+
 
 def static genDataForPosition(String dbName){
     def ex_sql = Global.getDBSql(dbName)
@@ -163,7 +164,7 @@ def static genRoleMenus(String dbName){
 def static genApplyData(String dbName){
     def ex_sql = Global.getDBSql(dbName)
     def insert_company_job_sql="INSERT INTO company_employer_job (job_id,user_id,company_id,status,status_desc,apply_date,expect_date,end_date,day_end_time)  VALUES (@job@,@user@,@company@,1,'造数据',NOW(),NOW(),NOW(),NOW())";
-    def selectJob ="select * from job";
+    def selectJob ="select * from job where company_id=11";
     def jobList = []
     def companyList =[]
     ex_sql.eachRow(selectJob) { row ->
@@ -171,17 +172,36 @@ def static genApplyData(String dbName){
         companyList.add(row['company_id'])
     }
 
-    for(int i=1500;i<2000 ;i++ ){
+    for(int i=3000;i<3500 ;i++ ){
             def random = new Random()
             def xRandom =random.nextInt(jobList.size()-1)
             def insert_string = insert_company_job_sql.replace("@job@",jobList.get(xRandom).toString())
             insert_string =insert_string.replace("@user@",i.toString())
-            insert_string =insert_string.replace("@company@",companyList.get(xRandom).toString())
+            insert_string =insert_string.replace("@company@","6")  //companyList.get(xRandom).toString()
             ex_sql.executeInsert(insert_string)
             println insert_string
 
     }
 }
+
+
+def static genApplyEmployerId(String dbName){
+    def ex_sql = Global.getDBSql(dbName)
+    def selectEJob ="select * from company_employer_job";
+    ex_sql.eachRow(selectEJob) { row ->
+        def sql_update="update company_employer_job set company_employer_id="
+
+        def sql_select="select * from company_employer where user_id="+row['user_id'];
+        def item_id=0
+        ex_sql.eachRow(sql_select){item ->
+            item_id=item['id']
+        }
+        sql_update=sql_update+item_id+" where id="+row['id']
+        println sql_update;
+        ex_sql.executeUpdate(sql_update)
+    }
+}
+
 
 //genRoleMenus("yp_enterprise");
 
@@ -195,6 +215,7 @@ def static genApplyData(String dbName){
 
 //genApplyData("yp_enterprise");
 
+//genApplyEmployerId("yp_enterprise")
 
 public static List<String> findDates(Date startTime, Date endTime)
         throws ParseException {
@@ -222,6 +243,60 @@ public static List<String> findDates(Date startTime, Date endTime)
 }
 
 SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
-Date startDate=sdf.parse("2019-11-13 22:00:00")
-Date endDate=sdf.parse("2019-11-15 05:00:00")
-println findDates(startDate,endDate)
+SimpleDateFormat sdf1 = new SimpleDateFormat("yyyy-MM-dd");
+//Date startDate=sdf.parse("2019-11-13 22:00:00")
+//Date endDate=sdf.parse("2019-11-15 05:00:00")
+Date now = new Date();
+String dString = "23:50-6:50";
+String[] tempString = dString.split("-")
+String ndate = null;
+Date start_Date=null;
+Date end_Date = null;
+
+def static addDay(Date date , int days) {
+    Calendar cal = Calendar.getInstance();
+    cal.setTime(date);
+    cal.add(Calendar.DAY_OF_MONTH, days);// 24小时制
+    return cal.getTime();
+}
+
+def static addHour(date ,hours) {
+    Calendar cal = Calendar.getInstance();
+    cal.setTime(date);
+    cal.add(Calendar.HOUR, hours);// 24小时制
+    return cal.getTime();
+}
+
+try{
+    ndate= sdf1.format(now)
+    start_Date = sdf.parse(ndate+" "+ tempString[0]+":00")
+    end_Date =  sdf.parse(ndate+" "+ tempString[1]+":00")
+    SimpleDateFormat sdf2 = new SimpleDateFormat("EEEE yyyy-MM-dd");
+    SimpleDateFormat sdf_2 = new SimpleDateFormat("MM月dd日 HH:mm");
+    println(sdf_2.format(start_Date))
+    //if(end_Date<start_Date) end_Date=addDay(end_Date)
+}catch(Exception e){
+   e.printStackTrace()
+}
+
+
+
+
+
+println ndate;
+println start_Date;
+println end_Date;
+
+
+def static clearData(String dbName){
+    def ex_sql = Global.getDBSql(dbName)
+    ex_sql.execute("delete from user_work_turn");
+    ex_sql.execute("delete from work_group_call");
+    ex_sql.execute("delete from work_group_users");
+    ex_sql.execute("delete from work_group_users_detail");
+    ex_sql.execute("delete from work_turn");
+    ex_sql.execute("delete from work_turn_timesheet");
+
+}
+//clearData("yp_enterprise")
+
