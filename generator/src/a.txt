@@ -1,0 +1,340 @@
+{
+  "status": 0,
+  "message": "成功",
+  "data": {
+    "records": [
+      {
+        "job_id": 1,
+        "job_name": "高薪招聘打包分拣",
+        "salary_standard": "18元/小时",
+        "job_addr": "龙岗平湖",
+        "distance": "2.5公里",
+        "job_date": "11.20 - 12.20",
+        "settle_type_name": "日结",
+        "job_type_name": "打包",
+        "benefits": [
+          "包吃",
+          "包住",
+          "加班补助"
+        ]
+      },
+      {
+        "job_id": 2,
+        "job_name": "大型电子厂急聘包住坐班...",
+        "salary_standard": "18元/小时",
+        "job_addr": "龙岗平湖",
+        "distance": "2.5公里",
+        "job_date": "11.20 - 12.20",
+        "settle_type_name": "日结",
+        "job_type_name": "打包",
+        "benefits": [
+          "包吃",
+          "包住",
+          "加班补助"
+        ]
+      },
+      {
+        "job_id": 3,
+        "job_name": "高薪招聘打包分拣",
+        "salary_standard": "18元/小时",
+        "job_addr": "龙岗平湖",
+        "distance": "2.5公里",
+        "job_date": "11.20 - 12.20",
+        "settle_type_name": "日结",
+        "job_type_name": "打包",
+        "benefits": [
+          "包吃",
+          "包住",
+          "加班补助"
+        ]
+      },
+      {
+        "job_id": 4,
+        "job_name": "高薪招聘打包分拣",
+        "salary_standard": "18元/小时",
+        "job_addr": "龙岗平湖",
+        "distance": "2.5公里",
+        "job_date": "11.20 - 12.20",
+        "settle_type_name": "日结",
+        "job_type_name": "打包",
+        "benefits": [
+          "包吃",
+          "包住",
+          "加班补助"
+        ]
+      }
+    ],
+    "total": 123,
+    "size": 1,
+    "current": 1,
+    "orders": [],
+    "searchCount": true,
+    "pages": 123
+  }
+}
+
+返回数据说明：
+records
+    job_id：工作ID，整数类型，“首页-报名”、“首页-工作详情-报名”等接口会用到
+    job_name：工作名称，字符串类型
+    salary_standard：薪资标准，字符串类型
+    job_addr：工作地址，字符串类型
+    distance：距离，字符串类型
+    job_date：工作日期，字符串类型
+    settle_type_name：结算类型，字符串类型
+    job_type_name：工种名称，字符串类型
+    benefits：福利列表，字符串数组
+total：条数，整数类型
+size： 每页显示几条，整数类型
+current：当前页码，整数类型
+
+参数名称	是否必须	示例	备注
+sign	是
+签名
+
+字符串类型
+
+timestamp	是
+时间戳
+
+字符串类型
+
+appid	是
+应用标识
+
+整数类型 1安卓用户端 2苹果用户端 3安卓中介-企业端 4苹果中介-企业端
+
+app_version	是
+版本号
+
+字符串类型，"1_2"
+
+token	否
+登录凭证
+
+字符串类型，登录凭证
+
+key_word	否
+搜索关键字
+
+字符串类型，搜索工种名称，工作名称
+
+city_code	是
+城市编码
+
+字符串类型
+
+settle_type_id	否
+结算方式，“首页-获取查询条件”接口有返回
+
+整数类型
+
+order_type_id	否
+排序方式，“首页-获取查询条件”接口有返回
+
+整数类型
+
+page_num	是
+第几页
+
+整数类型
+
+lng	是
+经度，从百度SDK获取，尽量高精度
+
+字符串类型
+
+lat	是
+纬度，从百度SDK获取，尽量高精度
+
+字符串类型
+
+
+sign	是
+签名
+
+字符串类型
+
+timestamp	是
+时间戳
+
+字符串类型
+
+appid	是
+应用标识
+
+整数类型 1安卓用户端 2苹果用户端 3安卓中介-企业端 4苹果中介-企业端
+
+app_version	是
+版本号
+
+字符串类型，"1_2"
+
+token	是
+登录凭证
+
+字符串类型
+
+e_job_id	是
+用户和工作的绑定关系ID，“工作-获取我的工作班次列表”接口有返回
+
+整数类型
+
+
+{
+  "status": 0,
+  "message": "成功",
+  "data": {
+    "time_sheet_date": "2019-11-05",
+    "job_type_name": "打包",
+    "job_turn": "8:00-6:00（次日）",
+    "work_hour": "9小时01分",
+    "piece_num": "1000件",
+    "piece_salary": "0.222元/件",
+    "salary": 300,
+    "salary_award": 200,
+    "salary_deduct": 100,
+    "salary_final": 400,
+    "salary_id": 1
+  }
+}
+
+
+
+{
+  "status": 0,
+  "message": "成功",
+  "data": [
+    {
+      "time_sheet_date": "2019-11-01",
+      "salary_final": 200,
+      "status": 1
+    },
+    {
+      "time_sheet_date": "2019-11-02",
+      "salary_final": 200,
+      "status": 1
+    },
+    {
+      "time_sheet_date": "2019-11-03",
+      "salary_final": 200,
+      "status": 1
+    },
+    {
+      "time_sheet_date": "2019-11-04",
+      "salary_final": 200,
+      "status": 1
+    },
+    {
+      "time_sheet_date": "2019-11-05",
+      "salary_final": 200,
+      "status": 1
+    },
+    {
+      "time_sheet_date": "2019-11-06",
+      "salary_final": 200,
+      "status": 1
+    },
+    {
+      "time_sheet_date": "2019-11-07",
+      "salary_final": 200,
+      "status": 1
+    },
+    {
+      "time_sheet_date": "2019-11-08",
+      "salary_final": 200,
+      "status": 1
+    },
+    {
+      "time_sheet_date": "2019-11-09",
+      "salary_final": 200,
+      "status": 1
+    },
+    {
+      "time_sheet_date": "2019-11-10",
+      "salary_final": 200,
+      "status": 1
+    },
+    {
+      "time_sheet_date": "2019-11-11",
+      "salary_final": 200,
+      "status": 2
+    },
+    {
+      "time_sheet_date": "2019-11-12",
+      "salary_final": 200,
+      "status": 1
+    }
+  ]
+}
+
+{
+  "status": 0,
+  "message": "成功",
+  "data": [
+    {
+      "time_sheet_date": "2019-11-01",
+      "status": 1
+    },
+    {
+      "time_sheet_date": "2019-11-02",
+      "status": 1
+    },
+    {
+      "time_sheet_date": "2019-11-03",
+      "status": 1
+    },
+    {
+      "time_sheet_date": "2019-11-04",
+      "status": 1
+    },
+    {
+      "time_sheet_date": "2019-11-05",
+      "status": 1
+    },
+    {
+      "time_sheet_date": "2019-11-06",
+      "status": 1
+    },
+    {
+      "time_sheet_date": "2019-11-07",
+      "status": 1
+    },
+    {
+      "time_sheet_date": "2019-11-08",
+      "status": 1
+    },
+    {
+      "time_sheet_date": "2019-11-09",
+      "status": 1
+    },
+    {
+      "time_sheet_date": "2019-11-10",
+      "status": 1
+    },
+    {
+      "time_sheet_date": "2019-11-11",
+      "status": 2
+    },
+    {
+      "time_sheet_date": "2019-11-12",
+      "status": 1
+    }
+  ]
+}
+
+{
+  "status": 0,
+  "message": "成功",
+  "data": {
+    "time_sheet_date": "2019-11-05",
+    "job_turn": "8:00-6:00（次日）",
+    "work_start_time": "8:00",
+    "work_end_time": "6:00（次日）",
+    "work_hour": "9小时01分",
+    "sign_in_time": "11月5日 9:00",
+    "sign_in_status": 1,
+    "sign_off_time": "11月6日 7:00",
+    "sign_off_status": 1
+  }
+}
