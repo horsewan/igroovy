@@ -1,3 +1,5 @@
+import groovy.sql.Sql
+
 import java.text.ParseException
 import java.text.SimpleDateFormat
 
@@ -217,6 +219,7 @@ def static genApplyEmployerId(String dbName){
 
 //genApplyEmployerId("yp_enterprise")
 
+
 public static List<String> findDates(Date startTime, Date endTime)
         throws ParseException {
     //SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
@@ -241,6 +244,7 @@ public static List<String> findDates(Date startTime, Date endTime)
     }
     return allDate;
 }
+
 
 SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
 SimpleDateFormat sdf1 = new SimpleDateFormat("yyyy-MM-dd");
@@ -300,3 +304,42 @@ def static clearData(String dbName){
 }
 //clearData("yp_enterprise")
 
+//println BigDecimal.valueOf("29.429816026309216")
+
+def static appData(){
+    def dburl= "jdbc:mysql://192.168.1.171:3306/"+"yp_enterprise"+"?useUnicode=true&characterEncoding=UTF-8&allowMultiQueries=true&serverTimezone=GMT"
+    def sql = Sql.newInstance(dburl, Global.getDBUserName(), Global.getDBPassword(), Global.getDriverClass())
+    def file = new File("initAddr.sql")
+    //def writer=file.newPrintWriter()
+    println "test"
+    file.eachLine{
+        println it
+       sql.executeInsert(it)
+    }
+}
+
+//appData();
+
+public static List<String> getDayListOfMonth(String yearMonth) {
+    List<String> list = new ArrayList<String>();
+    String[] ym=yearMonth.split("-");
+    int year = Integer.valueOf(ym[0]);//年份
+    int month =  Integer.valueOf(ym[1]);;//月份
+    Calendar a = Calendar.getInstance();
+    a.set(Calendar.YEAR, year);
+    a.set(Calendar.MONTH, month - 1);
+    a.set(Calendar.DATE, 1);//把日期设置为当月第一天
+    a.roll(Calendar.DATE, -1);//日期回滚一天，也就是最后一天
+    int day = a.get(Calendar.DATE);
+    for (int i = 1; i <= day; i++) {
+        String mm="0"+month;
+        String dd="0"+i;
+        if(mm.length()>2) mm=mm.substring(1)
+        if(dd.length()>2) dd=dd.substring(1)
+        String aDate = String.valueOf(year)+"-"+mm+"-"+dd;
+        list.add(aDate);
+    }
+    return list;
+}
+
+//println getDayListOfMonth("2019-2");

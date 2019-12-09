@@ -1,3 +1,4 @@
+import java.text.SimpleDateFormat
 
 /**
  * 通过经纬度获取距离(单位：米)
@@ -39,8 +40,8 @@ public static double getDistance2(double lat_a, double lng_a, double lat_b, doub
     return 6378137 * tt;
 }
 
-double distance = getDistance(22.68308826800817,114.13281696660855,22.68181674899255,114.12946072685526);
-double distance2 = getDistance2(22.68308826800817,114.13281696660855,22.68181674899255,114.12946072685526);
+double distance = getDistance(22.68678576525857,114.13688995385728,22.681768172008898,114.12991071306615);
+double distance2 = getDistance2(22.68678576525857114,114.13688995385728,22.681768172008898,114.12991071306615);
 println(distance);
 println(distance2);
 /*
@@ -51,3 +52,25 @@ println(distance2);
 192.30.253.119 gist.github.com
 
  */
+
+long nd = 1000 * 24 * 60 * 60;
+long nh = 1000 * 60 * 60;
+long nm = 1000 * 60;
+// long ns = 1000;
+// 获得两个时间的毫秒时间差异
+SimpleDateFormat sdf_date = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+def endDate= sdf_date.parse("2019-12-12 14:16:20");
+def startDate= sdf_date.parse("2019-12-12 6:19:20");
+long diff = endDate.getTime() - startDate.getTime();
+// 计算差多少天
+long day = diff / nd;
+// 计算差多少小时
+long hour = diff % nd / nh;
+
+long min = diff/1000/60;
+
+
+
+println(day)
+println(hour)
+println min
