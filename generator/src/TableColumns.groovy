@@ -49,6 +49,5 @@ def  static getTables(dbname){
         tableVO.setColumnVOList(columnVOList)
         listmap.put(tableName,tableVO)
     }
-
     return listmap
 }
